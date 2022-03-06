@@ -13,7 +13,7 @@ import { NetworkConnector } from "@web3-react/network-connector";
 
 const POLLING_INTERVAL = 12000;
 const RPC_URLS = {
-  1: process.env.NEXT_PUBLIC_PROVIDER,
+  1: "https://mainnet.infura.io/v3/7c752b94cfd84b1dad507ccd7b4a4df9",
   4: "https://rinkeby.infura.io/v3/bd80ce1ca1f94da48e151bb6868bb150"
 };
 

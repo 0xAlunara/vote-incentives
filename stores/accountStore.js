@@ -136,7 +136,7 @@ class Store {
 
   getCurrentBlock = async payload => {
     try {
-      var web3 = new Web3(process.env.NEXT_PUBLIC_PROVIDER);
+      var web3 = new Web3("https://mainnet.infura.io/v3/7c752b94cfd84b1dad507ccd7b4a4df9");
       const block = await web3.eth.getBlockNumber();
       this.setStore({ currentBlock: block });
     } catch (ex) {
