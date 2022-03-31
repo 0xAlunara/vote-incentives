@@ -351,6 +351,11 @@ class Store {
         symbol: 'ANGLE',
         decimals: 18,
       },
+      {
+        address: '0x4e3FBD56CD56c3e72c1403e103b45Db9da5B9D2B',
+        symbol: 'CVX',
+        decimals: 18,
+      },
 
     ]
   }
