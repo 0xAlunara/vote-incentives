@@ -356,7 +356,11 @@ class Store {
         symbol: 'CVX',
         decimals: 18,
       },
-
+      {
+        address: '0x41D5D79431A913C4aE7d69a668ecdfE5fF9DFB68',
+        symbol: 'INV',
+        decimals: 18,
+      },
     ]
   }
 
