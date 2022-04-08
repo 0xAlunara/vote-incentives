@@ -190,12 +190,23 @@ class Store {
       let name = 'Unknown'
       let lpTokenAddress = ''
 
+      // if not 0, we cant get LP token info cause it is on a different chain
       if(['0', '5', '6'].includes(gaugeType)) {
         const gauge = new web3.eth.Contract(GAUGE_CONTRACT_ABI, gaugeAddress)
-        lpTokenAddress = await gauge.methods.lp_token().call()
-        // if not 0, we cant get LP token info cause it is on a different chain
-        const lpToken = new web3.eth.Contract(ERC20_ABI, lpTokenAddress)
-        name = await lpToken.methods.name().call()
+        // this can still fail for optimism gauges because it's still 'mainnet' gaugetype 0.
+        // the lptoken address get call will give an error.
+        try {
+          lpTokenAddress = await gauge.methods.lp_token().call()
+          const lpToken = new web3.eth.Contract(ERC20_ABI, lpTokenAddress)
+          name = await lpToken.methods.name().call()
+        }
+        catch {
+          switch (gaugeAddress) {
+            case "0xc5aE4B5F86332e70f3205a8151Ee9eD9F71e0797":
+              name = "sUSD Synthetix";
+              break;
+          }
+        }
       } else {
         //manually map gauge names
         switch (gaugeAddress) {
